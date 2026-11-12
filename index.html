@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1win × Callie Rounds · An original series</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#000; --deep:#0a1a2e; --steel:#4686B7; --ice:#88C1ED; --white:#fff;
+    --mute:rgba(255,255,255,.58); --faint:rgba(255,255,255,.14); --card:rgba(6,12,22,.88);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;background:var(--ink)}
+  body{background:var(--ink);color:var(--white);font-family:"Inter Tight",Helvetica,Arial,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.5}
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  body:after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:50;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation:grain 1.2s steps(4) infinite}
+  @keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}100%{transform:translate(0,0)}}
+
+  .bar{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:20px 32px;font-size:13px;letter-spacing:.02em;mix-blend-mode:difference}
+  .bar b{font-weight:500}
+  .progress{position:fixed;left:0;top:0;height:1px;background:var(--ice);z-index:41;width:0;box-shadow:0 0 12px var(--ice)}
+
+  .slide{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;overflow:hidden;padding:120px 32px 100px}
+  .inner{width:100%;max-width:1200px;margin:0 auto;position:relative;z-index:2}
+  .bg{position:absolute;inset:0;z-index:0}
+  .bg img{width:100%;height:100%;object-fit:cover}
+  .shade{position:absolute;inset:0;z-index:1}
+
+  h1,h2{font-weight:200;letter-spacing:-.035em;line-height:1}
+  h1{font-size:clamp(52px,9vw,140px)}
+  h2{font-size:clamp(36px,5.4vw,80px);max-width:980px}
+  .grad{background:linear-gradient(180deg,#fff 0%,#fff 35%,var(--ice) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--ice);margin-bottom:26px;font-weight:400}
+  .lead{font-size:clamp(17px,1.6vw,21px);color:rgba(255,255,255,.78);max-width:720px;margin-top:30px}
+  .src{margin-top:44px;font-size:11.5px;color:rgba(255,255,255,.4);max-width:900px;line-height:1.7}
+  .src a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.18)}
+  .src a:hover{color:var(--ice)}
+
+  .r{opacity:0;transform:translateY(26px);filter:blur(6px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1),filter 1s}
+  .in .r{opacity:1;transform:none;filter:none}
+  .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+  /* cover */
+  #cover .bg{left:auto;width:46%}
+  #cover .bg img{object-position:50% 40%;animation:drift 18s ease-in-out infinite alternate}
+  @keyframes drift{from{transform:scale(1.08)}to{transform:scale(1.01) translateY(-1%)}}
+  #cover .shade{background:linear-gradient(90deg,#000 0%,#000 52%,rgba(0,0,0,.25) 72%,rgba(0,0,0,0) 100%),linear-gradient(0deg,rgba(0,0,0,.7),rgba(0,0,0,0) 35%)}
+  .tag{display:inline-flex;align-items:center;gap:10px;font-size:13px;border:1px solid var(--faint);border-radius:999px;padding:8px 16px;margin-bottom:34px;background:rgba(255,255,255,.04)}
+  .tag i{width:6px;height:6px;border-radius:50%;background:var(--ice);box-shadow:0 0 10px var(--ice)}
+  #cover .lead{max-width:560px}
+  .scrollcue{margin-top:56px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+
+  /* short version */
+  #short{background:radial-gradient(70% 60% at 50% 115%,rgba(70,134,183,.4),rgba(0,0,0,0) 70%),var(--ink)}
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:56px}
+  .card{border:1px solid var(--faint);border-radius:20px;padding:26px 24px;background:var(--card)}
+  .card .n{font-size:12px;letter-spacing:.2em;color:var(--ice);margin-bottom:16px}
+  .card b{display:block;font-weight:300;font-size:21px;letter-spacing:-.02em;line-height:1.25;margin-bottom:10px}
+  .card span{font-size:14px;color:var(--mute)}
+
+  /* competitors */
+  #rivals{background:linear-gradient(180deg,var(--ink),var(--deep) 160%)}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:52px}
+  .rv{border:1px solid var(--faint);border-radius:20px;padding:24px;background:var(--card);display:flex;flex-direction:column;gap:10px}
+  .rv h3{font-weight:300;font-size:26px;letter-spacing:-.02em}
+  .rv p{font-size:14px;color:rgba(255,255,255,.72)}
+  .rv .verdict{margin-top:auto;padding-top:12px;border-top:1px solid var(--faint);font-size:12.5px;color:var(--mute)}
+  .rv .verdict b{color:var(--white);font-weight:400}
+  .rv.you{border-color:rgba(136,193,237,.55);background:linear-gradient(160deg,rgba(136,193,237,.12),rgba(6,12,22,.9))}
+  .rv.you h3{color:var(--ice)}
+  .callout{margin-top:28px;display:flex;gap:16px;align-items:flex-start;max-width:860px;font-size:17px;color:rgba(255,255,255,.85)}
+  .callout i{flex:none;width:9px;height:9px;margin-top:9px;border-radius:50%;background:var(--ice);box-shadow:0 0 12px var(--ice)}
+
+  /* precedents */
+  #precedents{background:radial-gradient(60% 50% at 85% 15%,rgba(70,134,183,.25),rgba(0,0,0,0) 70%),var(--ink)}
+  .cases{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:52px}
+  .case{border:1px solid var(--faint);border-radius:20px;padding:26px 24px;background:var(--card)}
+  .case .who{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ice)}
+  .case .big{font-size:clamp(40px,4.4vw,60px);font-weight:200;letter-spacing:-.04em;line-height:1;margin:16px 0 8px}
+  .case p{font-size:14px;color:rgba(255,255,255,.72)}
+  .flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px;font-size:12.5px}
+  .flow span{border:1px solid var(--faint);border-radius:99px;padding:5px 11px;color:rgba(255,255,255,.85)}
+  .flow em{font-style:normal;color:var(--ice)}
+  .fail{margin-top:14px;border:1px dashed rgba(255,255,255,.2);border-radius:20px;padding:22px 24px;display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:center}
+  .fail .who{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#ff9d8a}
+  .fail p{font-size:14px;color:rgba(255,255,255,.72)}
+
+  /* why now */
+  #now{background:var(--ink)}
+  .split{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;margin-top:52px;align-items:start}
+  .bars .row{margin-bottom:26px}
+  .bars .lbl{display:flex;justify-content:space-between;font-size:14px;margin-bottom:10px;color:rgba(255,255,255,.8)}
+  .bars .lbl b{font-weight:200;font-size:34px;letter-spacing:-.03em;color:#fff;line-height:1}
+  .track{height:10px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden}
+  .fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--steel),var(--ice));box-shadow:0 0 18px rgba(136,193,237,.5);transition:width 2s cubic-bezier(.3,.7,.2,1) .3s}
+  .fill.dim{background:rgba(255,255,255,.35);box-shadow:none}
+  .note{font-size:13px;color:var(--mute);margin-top:4px}
+  .facts{display:flex;flex-direction:column;border-left:1px solid var(--faint)}
+  .facts div{position:relative;padding:0 0 26px 28px}
+  .facts div:before{content:"";position:absolute;left:-5px;top:9px;width:9px;height:9px;border-radius:50%;background:var(--ice);box-shadow:0 0 12px var(--ice)}
+  .facts b{display:block;font-weight:300;font-size:20px;letter-spacing:-.02em;margin-bottom:4px;line-height:1.3}
+  .facts span{font-size:14px;color:var(--mute)}
+
+  /* cost */
+  #cost{background:radial-gradient(70% 60% at 20% 110%,rgba(70,134,183,.35),rgba(0,0,0,0) 70%),var(--ink)}
+  .costs{margin-top:60px;max-width:900px}
+  .cost{display:grid;grid-template-columns:260px 1fr;gap:24px;align-items:center;margin-bottom:28px}
+  .cost .k{font-size:15px;color:rgba(255,255,255,.8)}
+  .cost .k small{display:block;font-size:12.5px;color:var(--mute);margin-top:2px}
+  .cost .v{display:flex;align-items:center;gap:16px}
+  .cost .v .track{flex:1;height:44px;border-radius:12px}
+  .cost .v .fill{border-radius:12px}
+  .cost .v b{font-weight:200;font-size:30px;letter-spacing:-.03em;white-space:nowrap;min-width:150px}
+
+  /* routes */
+  #routes{background:linear-gradient(180deg,var(--ink),var(--deep) 170%)}
+  .stages{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:52px;position:relative}
+  .stage{border:1px solid var(--faint);border-radius:20px;padding:24px 22px;background:var(--card);position:relative}
+  .stage .step{display:inline-block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);background:var(--ice);border-radius:99px;padding:4px 10px;margin-bottom:16px;font-weight:500}
+  .stage.later .step{background:rgba(255,255,255,.2);color:#fff}
+  .stage h3{font-weight:300;font-size:23px;letter-spacing:-.02em;line-height:1.2;margin-bottom:10px}
+  .stage p{font-size:13.5px;color:rgba(255,255,255,.7)}
+  .no{margin-top:14px;font-size:13.5px;color:var(--mute)}
+  .no b{color:#fff;font-weight:400}
+
+  /* rules */
+  #rules{background:var(--ink)}
+  .rules{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:52px}
+  .rule{border-top:1px solid var(--ice);padding-top:20px}
+  .rule .where{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ice);margin-bottom:12px}
+  .rule b{display:block;font-weight:300;font-size:20px;letter-spacing:-.02em;margin-bottom:8px;line-height:1.3}
+  .rule p{font-size:14px;color:rgba(255,255,255,.7)}
+  .answer{margin-top:52px;border:1px solid rgba(136,193,237,.5);border-radius:22px;padding:28px 30px;background:linear-gradient(160deg,rgba(136,193,237,.10),rgba(255,255,255,.02));max-width:960px}
+  .answer b{display:block;font-weight:300;font-size:clamp(20px,2vw,26px);letter-spacing:-.02em;line-height:1.3;margin-bottom:10px}
+  .answer p{font-size:15px;color:rgba(255,255,255,.75)}
+
+  /* models */
+  #models{background:radial-gradient(60% 50% at 50% 0%,rgba(70,134,183,.22),rgba(0,0,0,0) 70%),var(--ink)}
+  .models{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:52px}
+  .model{border:1px solid var(--faint);border-radius:22px;padding:28px 24px;background:var(--card);display:flex;flex-direction:column}
+  .model .tag2{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-bottom:14px}
+  .model h3{font-weight:300;font-size:26px;letter-spacing:-.02em;line-height:1.15;margin-bottom:12px}
+  .model p{font-size:14px;color:rgba(255,255,255,.72);margin-bottom:18px}
+  .model ul{list-style:none;margin-top:auto;border-top:1px solid var(--faint);padding-top:14px}
+  .model li{font-size:13.5px;padding:6px 0 6px 22px;position:relative;color:rgba(255,255,255,.8)}
+  .model li:before{position:absolute;left:0;top:6px;font-size:13px}
+  .model li.y:before{content:"+";color:var(--ice)}
+  .model li.n:before{content:"−";color:#ff9d8a}
+  .model.pick{border-color:var(--ice);background:linear-gradient(170deg,rgba(136,193,237,.16),rgba(6,12,22,.92) 60%);box-shadow:0 0 60px rgba(136,193,237,.12)}
+  .model.pick .tag2{color:var(--ice)}
+
+  /* gets */
+  #gets .bg{left:auto;width:42%}
+  #gets .bg img{object-position:50% 35%}
+  #gets .shade{background:linear-gradient(90deg,#000 0%,#000 56%,rgba(0,0,0,.3) 78%,rgba(0,0,0,.05) 100%)}
+  .gets{margin-top:48px;max-width:640px;display:flex;flex-direction:column;gap:0}
+  .get{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:18px 0;border-top:1px solid var(--faint)}
+  .get:first-child{border-top:0}
+  .get .i{font-size:12px;letter-spacing:.15em;color:var(--ice);padding-top:5px}
+  .get b{display:block;font-weight:300;font-size:20px;letter-spacing:-.02em;margin-bottom:4px}
+  .get span{font-size:14px;color:var(--mute)}
+
+  /* us */
+  #us{background:var(--ink)}
+  .us{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center;margin-top:20px}
+  .photos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .ph{border-radius:20px;overflow:hidden;aspect-ratio:9/14;position:relative}
+  .ph img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 1.6s cubic-bezier(.2,.7,.2,1)}
+  .in .ph img{transform:scale(1)}
+  .ph:nth-child(2){margin-top:48px}
+  .stat{font-size:clamp(64px,8vw,120px);font-weight:200;letter-spacing:-.05em;line-height:.95}
+  .stat sup{font-size:.35em;vertical-align:top;position:relative;top:.2em;color:var(--ice)}
+  .statl{font-size:14px;color:var(--mute);margin:8px 0 34px}
+  .pts div{padding:14px 0;border-top:1px solid var(--faint);font-size:15px;color:rgba(255,255,255,.82)}
+  .pts b{font-weight:400;color:#fff}
+
+  /* pilot */
+  #pilot{background:radial-gradient(70% 60% at 50% 110%,rgba(70,134,183,.4),rgba(0,0,0,0) 70%),var(--ink)}
+  .pilot{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:52px}
+  .pl{border:1px solid var(--faint);border-radius:20px;padding:24px 22px;background:var(--card)}
+  .pl b{display:block;font-weight:200;font-size:clamp(36px,3.6vw,52px);letter-spacing:-.04em;line-height:1;margin-bottom:10px}
+  .pl span{font-size:13.5px;color:var(--mute)}
+
+  /* close */
+  #close{background:radial-gradient(60% 60% at 50% 50%,rgba(70,134,183,.25),rgba(0,0,0,0) 70%),var(--ink);text-align:center}
+  #close .inner{display:flex;flex-direction:column;align-items:center}
+  #close .lead{margin-left:auto;margin-right:auto}
+  .sign{margin-top:46px;font-size:15px;color:rgba(255,255,255,.8)}
+  .sign a{color:var(--ice);text-decoration:none;border-bottom:1px solid rgba(136,193,237,.5)}
+  details.allsrc{margin-top:60px;max-width:860px;text-align:left;font-size:12px;color:rgba(255,255,255,.45)}
+  details.allsrc summary{cursor:pointer;text-align:center;letter-spacing:.15em;text-transform:uppercase;font-size:11px;list-style:none}
+  details.allsrc summary::-webkit-details-marker{display:none}
+  details.allsrc ol{margin:18px 0 0 18px;line-height:1.8}
+  details.allsrc a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.18)}
+
+  @media (max-width:900px){
+    .slide{padding:96px 16px 72px}
+    .bar{padding:16px}
+    .three,.grid,.cases,.rules,.models,.stages,.pilot{grid-template-columns:1fr}
+    .stages,.pilot{grid-template-columns:1fr 1fr}
+    .split,.us{grid-template-columns:1fr;gap:40px}
+    .fail{grid-template-columns:1fr;gap:8px}
+    .cost{grid-template-columns:1fr;gap:10px}
+    .cost .v b{min-width:0;font-size:24px}
+    #cover .bg,#gets .bg{width:100%}
+    #cover .shade{background:linear-gradient(0deg,#000 0%,rgba(0,0,0,.85) 45%,rgba(0,0,0,.35) 100%)}
+    #cover{align-items:flex-end}
+    #gets .shade{background:rgba(0,0,0,.84)}
+    .ph:nth-child(2){margin-top:28px}
+  }
+  @media (max-width:520px){
+    .stages,.pilot{grid-template-columns:1fr}
+    .bar span:last-child{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .r{opacity:1;transform:none;filter:none;transition:none}
+    .fill{transition:none}
+    body:after,#cover .bg img{animation:none}
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="bar"><span><b>1win</b> × Callie Rounds</span><span>An original series · November 2026</span></div>
+
+<!-- 01 cover -->
+<section class="slide" id="cover">
+  <div class="bg"><img src="assets/cover.jpg" alt="Callie and a creator on a swing above the clouds"></div>
+  <div class="shade"></div>
+  <div class="inner">
+    <div class="tag r"><i></i>An opportunity, before a concept</div>
+    <h1 class="r d1 grad">A show that<br>1win owns.</h1>
+    <p class="lead r d2">Before we talk about what the show would be, this is the case for making one at all: what your competitors are doing, how other restricted brands built their own media, where a series like this could be watched, and how to set it up so the most people can legally see it.</p>
+    <div class="scrollcue r d3">Scroll</div>
+  </div>
+</section>
+
+<!-- 02 short version -->
+<section class="slide" id="short">
+  <div class="inner">
+    <div class="eyebrow r">The short version</div>
+    <h2 class="r d1">There is an open space in your category, and it is cheaper to own than it has ever been.</h2>
+    <div class="three">
+      <div class="card r d2"><div class="n">01</div><b>No betting brand owns a series</b><span>Your competitors buy shirts, fighters and sponsored videos. None of them has built a show people choose to watch.</span></div>
+      <div class="card r d3"><div class="n">02</div><b>Creator shows are now watched like TV</b><span>YouTube is the biggest thing on American TV screens, and Netflix and Amazon are buying shows that started there.</span></div>
+      <div class="card r d4"><div class="n">03</div><b>The smart way in is a show with its own name</b><span>The rules in 2026 follow the 1win name, so the series that travels furthest is one 1win funds and is credited on where that is allowed.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 competitors -->
+<section class="slide" id="rivals">
+  <div class="inner">
+    <div class="eyebrow r">What your competitors are doing</div>
+    <h2 class="r d1">Your competitors pay for attention, but none of them has built a show yet.</h2>
+    <div class="grid">
+      <div class="rv r d1"><h3>Stake</h3><p>Sponsors Everton and the UFC, put its name on an F1 team, and its founders back the streaming platform Kick. It has also paid for 220 sponsored YouTube videos across 25 channels.</p><div class="verdict"><b>Owns a platform, not a show.</b> Every video is a one-off ad read inside someone else's content.</div></div>
+      <div class="rv r d2"><h3>1xBet</h3><p>Signed Conor McGregor and has sponsored FC Barcelona since 2019. Co-funded one esports documentary series, OG's "Origins", in 2024.</p><div class="verdict"><b>One co-funded documentary,</b> made for an esports team, not for 1xBet.</div></div>
+      <div class="rv r d3"><h3>PokerStars</h3><p>Brought its old TV format "The Big Game" to YouTube. Season 3 started in May 2026 with UFC fighter Sean O'Malley playing against poker pros.</p><div class="verdict"><b>The closest thing to a series,</b> but it is a poker show about poker.</div></div>
+      <div class="rv r d1"><h3>Paddy Power</h3><p>Made a sitcom, "The VAR Room", that aired on UK terrestrial TV in 2021, plus a football documentary series and "Jamie Redknapp Investigates".</p><div class="verdict"><b>Proved betting brands can make real shows,</b> but only for UK football fans.</div></div>
+      <div class="rv r d2"><h3>MelBet, Parimatch and the rest</h3><p>MelBet ran a "MelBet Night Show" in India. Parimatch makes ad films. Mostbet, Pin-Up and BC.Game buy sponsorships and ambassadors.</p><div class="verdict"><b>No owned long-form content</b> that we could find.</div></div>
+      <div class="rv you r d3"><h3>1win today</h3><p>Canelo, Jon Jones, Ilia Topuria and Gable Steveson, your Dota 2 team, 1win Charity, and the Jon Jones 21-day holiday challenge.</p><div class="verdict"><b>The strongest roster of faces in the category,</b> with no show for them to live in yet.</div></div>
+    </div>
+    <div class="callout r d4"><i></i><span>The first offshore brand to own a real adventure or documentary series has the category to itself. 1win already has the people for it.</span></div>
+    <p class="src r d5">Sources: <a href="https://sponsorradar.com/brands/stake" target="_blank" rel="noopener">SponsorRadar, 5 Nov 2026</a> · <a href="https://africasport.net/article/esports/og-esports-partners-with-1xbet-to-launch-origins-documentary-series" target="_blank" rel="noopener">AfricaSport</a> · <a href="https://www.pokernews.com/news/2026/05/pokerstars-big-game-on-tour-season-3-51258.htm" target="_blank" rel="noopener">PokerNews, May 2026</a> · <a href="https://www.advanced-television.com/2021/06/16/paddy-power-moves-into-tv-content-production/" target="_blank" rel="noopener">Advanced Television</a> · <a href="https://focusgn.com/how-2025-went-for-melbet-partners-affiliates-growth-partnerships-and-more-activities" target="_blank" rel="noopener">Focus Gaming News</a> · <a href="https://www.malaymail.com/news/money/mediaoutreach/2026/01/06/1win-and-mma-legend-jon-jones-fulfill-over-100-wishes-in-global-holiday-initiative/441471" target="_blank" rel="noopener">Malay Mail, Jan 2026</a></p>
+  </div>
+</section>
+
+<!-- 04 precedents -->
+<section class="slide" id="precedents">
+  <div class="inner">
+    <div class="eyebrow r">How other restricted brands did it</div>
+    <h2 class="r d1">The restricted brands that won did it under a second name.</h2>
+    <div class="cases">
+      <div class="case r d1"><div class="who">OnlyFans · OFTV</div><div class="big">Netflix</div><p>OnlyFans launched OFTV in 2021 as a free app with no adult content, because the main site could not get into the app stores. Its reality show "House of Sims" later became the first show Netflix ever licensed from OnlyFans.</p><div class="flow"><span>OFTV, May 2023</span><em>→</em><span>Netflix UK, March 2024</span><em>→</em><span>Tubi</span></div></div>
+      <div class="case r d2"><div class="who">Stake · Kick</div><div class="big">1.1bn hrs</div><p>Kick is backed by Stake's founders and carries a clean name of its own, which ran on the F1 car alongside Stake's. It paid xQc $70 million guaranteed and passed 1.1 billion hours watched in the second quarter of 2025.</p></div>
+      <div class="case r d3"><div class="who">Red Bull Media House</div><div class="big">1,000+</div><p>Red Bull turned its content into a business with over 1,000 distribution partners, including free TV channels on Samsung, Pluto, Roku, LG and JioTV in India. Every project has to earn its money back through ads, licensing or co-production.</p></div>
+    </div>
+    <div class="fail r d4"><div class="who">What did not work</div><p>FanDuel turned a racing channel into FanDuel TV in 2022 and announced it was shutting it down in March 2026. Penn bought Barstool for $551 million and sold it back for $1. Both put the betting brand front and centre and paid for a full TV operation before they had a hit.</p></div>
+    <p class="src r d5">Sources: <a href="https://whats-on-netflix.com/news/netflix-licenses-its-first-show-from-onlyfans-in-the-uk" target="_blank" rel="noopener">What's on Netflix</a> · <a href="https://tubefilter.com/2021/08/16/onlyfans-launches-first-app-oftv-free-ad-free-no-nudity/" target="_blank" rel="noopener">Tubefilter, Aug 2021</a> · <a href="https://streamscharts.com/news/q2-2025-global-livestreaming-landscape" target="_blank" rel="noopener">Streams Charts</a> · <a href="https://tubefilter.com/2023/06/20/kick-xqc-amouranth-deals/" target="_blank" rel="noopener">Tubefilter, Jun 2023</a> · <a href="https://www.redbullmediahouse.com/en/partnerships/media-partnerships/" target="_blank" rel="noopener">Red Bull Media House</a> · <a href="https://sbcamericas.com/2026/03/27/report-fanduel-tv-set-to-turn-off/" target="_blank" rel="noopener">SBC Americas, Mar 2026</a> · <a href="https://cdcgaming.com/brief/from-barstool-to-espn-the-timeline-of-penn-entertainments-sports-betting-journey/" target="_blank" rel="noopener">CDC Gaming</a></p>
+  </div>
+</section>
+
+<!-- 05 why now -->
+<section class="slide" id="now">
+  <div class="inner">
+    <div class="eyebrow r">Why now</div>
+    <h2 class="r d1">Creator shows are now watched on the TV, and the big streamers are buying them.</h2>
+    <div class="split">
+      <div class="bars r d2">
+        <div class="note" style="margin-bottom:22px">Share of all TV viewing in the US, August 2026</div>
+        <div class="row"><div class="lbl"><span>YouTube</span><b>15.8%</b></div><div class="track"><div class="fill" data-w="100"></div></div></div>
+        <div class="row"><div class="lbl"><span>Netflix</span><b>7.7%</b></div><div class="track"><div class="fill dim" data-w="48.7"></div></div></div>
+        <p class="note">More than half of all YouTube watch time in the US now happens on a TV screen, which is about 200 million hours a day.</p>
+      </div>
+      <div class="facts r d3">
+        <div><b>Beast Games reached 50 million viewers in 25 days</b><span>It became Prime Video's most watched unscripted show and was renewed for two more seasons.</span></div>
+        <div><b>The Sidemen took "Inside" from YouTube to Netflix</b><span>Season one opened with about 14 million YouTube views, and Netflix paid for season two.</span></div>
+        <div><b>Druski paid for his own YouTube shows, then signed with Netflix</b><span>He funded them himself after streamers passed. Once the audience was proven, Netflix signed a multiyear deal on 2 November 2026.</span></div>
+      </div>
+    </div>
+    <p class="src r d4">Sources: <a href="https://www.nielsen.com/news-center/2026/tv-viewing-cools-off-in-nielsens-august-gauge-reports-as-sports-take-a-breather-and-school-resumes/" target="_blank" rel="noopener">Nielsen, The Gauge, Aug 2026</a> · <a href="https://www.tvtechnology.com/news/youtube-ceo-tv-overtakes-mobile-as-primary-device-for-viewing-in-the-u-s" target="_blank" rel="noopener">TV Technology</a> · <a href="https://www.aboutamazon.com/news/entertainment/mr-beast-prime-video-season-2-beast-games" target="_blank" rel="noopener">Amazon</a> · <a href="https://deadline.com/2025/07/inside-did-the-sidemen-youtube-netflix-gamble-pay-off-1236459666/" target="_blank" rel="noopener">Deadline, Jul 2025</a> · <a href="https://www.thewrap.com/media-platforms/tv/netflix-druski-deal-shows/" target="_blank" rel="noopener">TheWrap, Nov 2026</a></p>
+  </div>
+</section>
+
+<!-- 06 cost -->
+<section class="slide" id="cost">
+  <div class="inner">
+    <div class="eyebrow r">What it costs</div>
+    <h2 class="r d1">A creator series costs around a tenth of a traditional TV season.</h2>
+    <p class="lead r d2">These are industry figures for ten episodes, quoted by a producer to Digiday this month. They are a guide to the scale, not our quote, and we would price a pilot properly once we know what 1win wants from it.</p>
+    <div class="costs r d3">
+      <div class="cost"><div class="k">Brand-funded creator series<small>10 long episodes plus 30 shorts</small></div><div class="v"><div class="track"><div class="fill" data-w="10"></div></div><b>$300K to $500K</b></div></div>
+      <div class="cost"><div class="k">Traditional unscripted TV<small>10 episodes</small></div><div class="v"><div class="track"><div class="fill dim" data-w="100"></div></div><b>About $5M</b></div></div>
+    </div>
+    <p class="src r d4">Source: <a href="https://digiday.com/future-of-tv/future-of-tv-briefing-what-it-costs-brands-to-fund-long-form-creator-series/" target="_blank" rel="noopener">Digiday, "What it costs brands to fund long-form creator series", 4 Nov 2026</a></p>
+  </div>
+</section>
+
+<!-- 07 rules -->
+<section class="slide" id="rules">
+  <div class="inner">
+    <div class="eyebrow r">What changed in 2026</div>
+    <h2 class="r d1">The rules now follow the brand name, not what is shown on screen.</h2>
+    <div class="rules">
+      <div class="rule r d1"><div class="where">India · from 1 May 2026</div><b>Promoting real-money gaming directly or indirectly is now a crime</b><p>This covers offshore operators and the influencers who promote them, and commentators read it as covering content framed as entertainment.</p></div>
+      <div class="rule r d2"><div class="where">Brazil · from 25 Sept 2026</div><b>All betting advertising and sponsorship is banned</b><p>The decree covers any content that promotes or makes it easier to reach betting, and its validity was extended on 10 November.</p></div>
+      <div class="rule r d3"><div class="where">YouTube · since March 2025</div><b>Logos, links and spoken mentions count</b><p>YouTube removes content that points viewers to gambling sites Google has not certified, even when no betting is shown.</p></div>
+    </div>
+    <div class="answer r d4"><b>This is exactly why OnlyFans built OFTV and why Stake's founders built Kick.</b><p>A show with its own name and no gambling in it can be watched, recommended and licensed anywhere. 1win funds it and is credited on it in the markets where that is allowed, and a clean version goes everywhere else. We would build the show this way from day one and check the credit plan with your compliance team before anything is filmed.</p></div>
+    <p class="src r d5">Sources: <a href="https://www.legal500.com/intelligence/india/media-telecoms-it-entertainment/the-promotion-and-regulation-of-online-gaming-act-2025-and-the-promotion-and-regulation-of-online-gaming-rules-2026" target="_blank" rel="noopener">Legal500 on India's Online Gaming Act 2025</a> · <a href="https://www.gov.br/fazenda/pt-br/composicao/orgaos/secretaria-de-premios-e-apostas/medida-provisoria-ndeg-1-394-2026-entenda-as-novas-regras-para-as-apostas-de-quota-fixa" target="_blank" rel="noopener">Ministério da Fazenda, MP 1.394/2026</a> · <a href="https://www.camara.leg.br/mpemdia/mp?ano=2026&id=1394" target="_blank" rel="noopener">Câmara dos Deputados</a> · <a href="https://support.google.com/youtube/answer/17596007?hl=en" target="_blank" rel="noopener">YouTube branded content policy</a> · <a href="https://gigazine.net/gsc_news/en/20250305-youtube-online-gambling-rules" target="_blank" rel="noopener">Gigazine, Mar 2025</a></p>
+  </div>
+</section>
+
+<!-- 08 routes -->
+<section class="slide" id="routes">
+  <div class="inner">
+    <div class="eyebrow r">Where it could be watched</div>
+    <h2 class="r d1">Launch where the audience already is, then license it out.</h2>
+    <div class="stages">
+      <div class="stage r d1"><span class="step">Launch</span><h3>YouTube</h3><p>Free to watch, mostly on TV screens, and it can be fully recommended and monetised as long as there is no gambling in the show. Short cutdowns run on Instagram and YouTube Shorts.</p></div>
+      <div class="stage r d2"><span class="step">Second window</span><h3>Free streaming apps</h3><p>Tubi, The Roku Channel and Pluto license finished seasons and usually split ad revenue around 50/50. House of Sims is on Tubi today.</p></div>
+      <div class="stage r d3"><span class="step">Regional</span><h3>Streamers in your markets</h3><p>JioHotstar's creator section made 30 creator-led shows with nearly 300 Indian creators in nine months, and Globo just licensed 18 of its originals to Netflix.</p></div>
+      <div class="stage r d4"><span class="step">The upside</span><h3>Netflix or Prime Video</h3><p>This is the House of Sims and Sidemen route. It is earned with audience numbers rather than promised, which is why the first season should be built to be licensable.</p></div>
+    </div>
+    <p class="no r d5"><b>Later, not first:</b> a 1win app or a 24/7 channel. A free TV channel needs around 300 hours of content, and OnlyFans and Red Bull both had large libraries before going that way. <b>Not at all:</b> TikTok, which does not allow gambling sponsors of any kind.</p>
+    <p class="src r d5">Sources: <a href="https://tbivision.com/?p=886237" target="_blank" rel="noopener">TBI Vision</a> · <a href="https://videoagedaily.com/digitalissues/PDF/Video%20Age%20International%20December%202023/14" target="_blank" rel="noopener">Video Age, Dec 2023</a> · <a href="https://tubitv.com/series/300019596/house-of-sims" target="_blank" rel="noopener">Tubi</a> · <a href="https://www.storyboard18.com/ott-news/creator-led-reality-shows-otts-turn-to-influencers-as-new-faces-of-prime-timecreator-led-reality-shows-otts-turn-to-influencers-as-new-faces-of-prime-time-84177.htm" target="_blank" rel="noopener">Storyboard18</a> · <a href="https://www.meioemensagem.com.br/midia/netflix-faz-acordo-de-licenciamento-com-globo" target="_blank" rel="noopener">Meio &amp; Mensagem</a> · <a href="https://sbcnews.co.uk/technology/2026/11/04/tiktok-gambling-policy/" target="_blank" rel="noopener">SBC News, Nov 2026</a></p>
+  </div>
+</section>
+
+<!-- 09 models -->
+<section class="slide" id="models">
+  <div class="inner">
+    <div class="eyebrow r">Three ways to do it</div>
+    <h2 class="r d1">We think the third option is the strongest.</h2>
+    <div class="models">
+      <div class="model r d1"><div class="tag2">Option one</div><h3>A 1win TV channel or app</h3><p>The most direct version of OFTV, with 1win's name on everything.</p><ul><li class="y">The most brand credit per viewer</li><li class="n">The fewest viewers, because the name is what the rules restrict</li><li class="n">Needs a big library before it is worth launching</li></ul></div>
+      <div class="model r d2"><div class="tag2">Option two</div><h3>Sponsored videos inside other creators' content</h3><p>What Stake does with its 220 YouTube integrations.</p><ul><li class="y">Quick and already proven</li><li class="n">Nothing is left once the campaign ends</li><li class="n">It is the same thing your competitors already buy</li></ul></div>
+      <div class="model pick r d3"><div class="tag2">Option three · our pick</div><h3>An original series with its own name, funded by 1win</h3><p>The OFTV and Kick approach at the size of one show, starting with a pilot.</p><ul><li class="y">Can be watched, recommended and licensed everywhere</li><li class="y">1win is credited wherever that is allowed</li><li class="y">Builds a library 1win's fighters and esports team can join in later seasons</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 what 1win gets -->
+<section class="slide" id="gets">
+  <div class="bg"><img src="assets/heli.jpg" alt="Two creators hanging from a helicopter skid"></div>
+  <div class="shade"></div>
+  <div class="inner">
+    <div class="eyebrow r">What 1win gets</div>
+    <h2 class="r d1" style="max-width:640px">A media asset instead of another campaign.</h2>
+    <div class="gets">
+      <div class="get r d1"><div class="i">01</div><div><b>Reach where ads cannot go</b><span>A show people choose to watch can travel into places a betting ad never could, the same way Kick went where Stake could not.</span></div></div>
+      <div class="get r d2"><div class="i">02</div><div><b>Credibility with press and partners</b><span>OFTV's biggest credibility moment was a single Netflix licence, and a real series gives 1win a story that is not a press release.</span></div></div>
+      <div class="get r d3"><div class="i">03</div><div><b>A home for your roster</b><span>Your fighters and your Dota 2 team already come with storylines, and a series gives them somewhere to live beyond an announcement post.</span></div></div>
+      <div class="get r d4"><div class="i">04</div><div><b>Content that can earn back</b><span>A finished season can be licensed to free streaming apps and regional streamers, which is how Red Bull makes its content pay for itself.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 us -->
+<section class="slide" id="us">
+  <div class="inner">
+    <div class="us">
+      <div class="photos r">
+        <div class="ph"><img src="assets/swing.jpg" alt="Two creators on a swing above the clouds"></div>
+        <div class="ph"><img src="assets/coast.jpg" alt="Callie on a helicopter skid above the coast in a 1win top"></div>
+      </div>
+      <div>
+        <div class="eyebrow r">Why us</div>
+        <div class="stat r d1">80M<sup>+</sup></div>
+        <div class="statl r d1">views on 1win content since July</div>
+        <div class="pts r d2">
+          <div><b>We run it end to end,</b> with one crew and one cinematic style, so every episode looks like a real show and not a sponsored vlog.</div>
+          <div><b>We bring the creators.</b> Creators trust us to keep them safe on big stunts, which is what gets the right people to say yes.</div>
+          <div><b>We already know how 1win works,</b> because we have been making your content every month since July.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 pilot -->
+<section class="slide" id="pilot">
+  <div class="inner">
+    <div class="eyebrow r">How we would start</div>
+    <h2 class="r d1">One small pilot, with the success numbers agreed before we film.</h2>
+    <div class="pilot">
+      <div class="pl r d1"><b>1</b><span>trip and one location</span></div>
+      <div class="pl r d2"><b>4 to 5</b><span>creators from our network</span></div>
+      <div class="pl r d3"><b>3</b><span>episodes of 15 to 25 minutes</span></div>
+      <div class="pl r d4"><b>20 to 30</b><span>short cutdowns across the creators' own accounts</span></div>
+    </div>
+    <p class="lead r d5">If the pilot hits the numbers we agree on together, it becomes a full season. If it does not, 1win has spent a fraction of what a TV season costs to find out.</p>
+  </div>
+</section>
+
+<!-- 13 close -->
+<section class="slide" id="close">
+  <div class="inner">
+    <div class="eyebrow r">Next step</div>
+    <h2 class="r d1 grad">Is this something 1win would like to explore?</h2>
+    <p class="lead r d2">If it is, we will come back with a few format options and a costed pilot, built around what matters most to 1win.</p>
+    <div class="sign r d3">Callie Rounds · <a href="https://www.instagram.com/callie.rounds/" target="_blank" rel="noopener">@callie.rounds</a></div>
+    <details class="allsrc r d4">
+      <summary>All sources</summary>
+      <ol>
+        <li><a href="https://www.nielsen.com/news-center/2026/tv-viewing-cools-off-in-nielsens-august-gauge-reports-as-sports-take-a-breather-and-school-resumes/" target="_blank" rel="noopener">Nielsen, The Gauge, August 2026</a></li>
+        <li><a href="https://www.tvtechnology.com/news/youtube-ceo-tv-overtakes-mobile-as-primary-device-for-viewing-in-the-u-s" target="_blank" rel="noopener">TV Technology, YouTube watch time on TV screens</a></li>
+        <li><a href="https://digiday.com/future-of-tv/future-of-tv-briefing-what-it-costs-brands-to-fund-long-form-creator-series/" target="_blank" rel="noopener">Digiday, 4 November 2026</a></li>
+        <li><a href="https://whats-on-netflix.com/news/netflix-licenses-its-first-show-from-onlyfans-in-the-uk" target="_blank" rel="noopener">What's on Netflix, House of Sims licence</a></li>
+        <li><a href="https://tubefilter.com/2021/08/16/onlyfans-launches-first-app-oftv-free-ad-free-no-nudity/" target="_blank" rel="noopener">Tubefilter, OFTV launch</a></li>
+        <li><a href="https://streamscharts.com/news/q2-2025-global-livestreaming-landscape" target="_blank" rel="noopener">Streams Charts, Q2 2025</a></li>
+        <li><a href="https://tubefilter.com/2023/06/20/kick-xqc-amouranth-deals/" target="_blank" rel="noopener">Tubefilter, Kick and xQc</a></li>
+        <li><a href="https://sponsorradar.com/brands/stake" target="_blank" rel="noopener">SponsorRadar, Stake</a></li>
+        <li><a href="https://www.redbullmediahouse.com/en/partnerships/media-partnerships/" target="_blank" rel="noopener">Red Bull Media House partnerships</a></li>
+        <li><a href="https://sbcamericas.com/2026/03/27/report-fanduel-tv-set-to-turn-off/" target="_blank" rel="noopener">SBC Americas, FanDuel TV</a></li>
+        <li><a href="https://cdcgaming.com/brief/from-barstool-to-espn-the-timeline-of-penn-entertainments-sports-betting-journey/" target="_blank" rel="noopener">CDC Gaming, Penn and Barstool</a></li>
+        <li><a href="https://www.aboutamazon.com/news/entertainment/mr-beast-prime-video-season-2-beast-games" target="_blank" rel="noopener">Amazon, Beast Games</a></li>
+        <li><a href="https://deadline.com/2025/07/inside-did-the-sidemen-youtube-netflix-gamble-pay-off-1236459666/" target="_blank" rel="noopener">Deadline, Sidemen Inside</a></li>
+        <li><a href="https://www.thewrap.com/media-platforms/tv/netflix-druski-deal-shows/" target="_blank" rel="noopener">TheWrap, Druski and Netflix</a></li>
+        <li><a href="https://www.pokernews.com/news/2026/05/pokerstars-big-game-on-tour-season-3-51258.htm" target="_blank" rel="noopener">PokerNews, The Big Game Season 3</a></li>
+        <li><a href="https://www.advanced-television.com/2021/06/16/paddy-power-moves-into-tv-content-production/" target="_blank" rel="noopener">Advanced Television, Paddy Power</a></li>
+        <li><a href="https://africasport.net/article/esports/og-esports-partners-with-1xbet-to-launch-origins-documentary-series" target="_blank" rel="noopener">AfricaSport, OG Origins</a></li>
+        <li><a href="https://focusgn.com/how-2025-went-for-melbet-partners-affiliates-growth-partnerships-and-more-activities" target="_blank" rel="noopener">Focus Gaming News, MelBet</a></li>
+        <li><a href="https://www.legal500.com/intelligence/india/media-telecoms-it-entertainment/the-promotion-and-regulation-of-online-gaming-act-2025-and-the-promotion-and-regulation-of-online-gaming-rules-2026" target="_blank" rel="noopener">Legal500, India Online Gaming Act 2025</a></li>
+        <li><a href="https://www.gov.br/fazenda/pt-br/composicao/orgaos/secretaria-de-premios-e-apostas/medida-provisoria-ndeg-1-394-2026-entenda-as-novas-regras-para-as-apostas-de-quota-fixa" target="_blank" rel="noopener">Ministério da Fazenda, MP 1.394/2026</a></li>
+        <li><a href="https://support.google.com/youtube/answer/17596007?hl=en" target="_blank" rel="noopener">YouTube branded content policy</a></li>
+        <li><a href="https://tbivision.com/?p=886237" target="_blank" rel="noopener">TBI Vision, FAST revenue share</a></li>
+        <li><a href="https://www.storyboard18.com/ott-news/creator-led-reality-shows-otts-turn-to-influencers-as-new-faces-of-prime-timecreator-led-reality-shows-otts-turn-to-influencers-as-new-faces-of-prime-time-84177.htm" target="_blank" rel="noopener">Storyboard18, JioHotstar Sparks</a></li>
+        <li><a href="https://sbcnews.co.uk/technology/2026/11/04/tiktok-gambling-policy/" target="_blank" rel="noopener">SBC News, TikTok gambling policy</a></li>
+      </ol>
+    </details>
+  </div>
+</section>
+
+<script>
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('.fill[data-w]').forEach(f=>f.style.width=f.dataset.w+'%')}}),{threshold:.18});
+  document.querySelectorAll('.slide').forEach(s=>io.observe(s));
+  const p=document.getElementById('progress');
+  addEventListener('scroll',()=>{const h=document.documentElement;p.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
+</script>
+</body>
+</html>
